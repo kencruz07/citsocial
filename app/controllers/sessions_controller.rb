@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       session[:first_name] = user.first_name
+      session[:last_name] = user.last_name
       redirect_to :controller => 'main', :action => 'new'
     else
       flash.now.alert = "Invalid email or password"
@@ -17,6 +18,6 @@ class SessionsController < ApplicationController
 
   def destroy
   	session[:user_id] = nil
-    redirect_to root_url, :notice => "Logged out!"
+    redirect_to root_url
   end
 end

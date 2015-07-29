@@ -11,23 +11,38 @@
 </head>
 <body>
 
-  <h1>Log In</h1>
+  <div class="row">
+    <div class="col-xs-12"><h1>citsocial - Log In</h1></div>
+  </div>
+  <div></div>
 
   <%= form_tag log_in_path do %>
-    <p>
-      <%= label_tag :email %><br />
-      <%= text_field_tag :email, params[:email] %>
-    </p>
-    <p>
-      <%= label_tag :password %><br />
-      <%= password_field_tag :password %>
-    </p>
-    <%= submit_tag "Login", class: "btn btn-primary" %>
+    <div class="row">
+      <div class="col-xs-1 col-sm-offset-3">
+        <%= label_tag :email %>
+      </div>
+      <div class="col-xs-5">
+        <%= text_field_tag :email, params[:email], class: "log_in_input_field" %>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 1rem; margin-bottom: 1rem;">
+      <div class="col-xs-1 col-sm-offset-3">
+      <%= label_tag :password %>
+      </div>
+      <div class="col-xs-5">
+      <%= password_field_tag :password, params[:password], class: "log_in_input_field" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3 col-sm-offset-3">
+       <%= submit_tag "Log In", class: "btn btn-primary log_in_buttons" %>
+      </div>
+      <div class="col-xs-3 link_to_sign_up">        
+       <%= link_to "<input type='button' class='btn btn-default log_in_buttons' value='Sign Up'>".html_safe, new_user_path %>
+    </div>
     <br/>
-    <%= link_to "Sign Up", new_user_path %>
+    
   <% end %>
-
-<%= yield %>
 
 </body>
 </html>
