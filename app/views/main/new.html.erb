@@ -1,20 +1,2 @@
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Citsocial - Log In</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'bootstrap-theme.min', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-  	<h1><%= session[:first_name].to_s+" "+session[:last_name].to_s %></h1>
-	<%= link_to "Log Out", log_out_path, :method => :delete%>
-
-</body>
-</html>
+<h1><%= "#{current_user[:first_name]} #{current_user[:last_name]}" %></h1>
+<%= link_to "Log Out", log_out_path, :method => :delete%>

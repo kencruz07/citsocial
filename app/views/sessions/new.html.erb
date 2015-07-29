@@ -1,48 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Citsocial - Log In</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'bootstrap-theme.min', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<div class="row">
+  <div class="col-xs-12"><h1 class="text-center">citsocial - Log In</h1></div>
+</div>
 
+<%= form_tag log_in_path do %>
   <div class="row">
-    <div class="col-xs-12"><h1>citsocial - Log In</h1></div>
+    <div class="col-xs-1 col-sm-offset-3">
+      <%= label_tag :email %>
+    </div>
+    <div class="col-xs-5">
+      <%= text_field_tag :email, params[:email], class: "form-control input-lg text-center" %>
+    </div>
   </div>
-  <div></div>
-
-  <%= form_tag log_in_path do %>
-    <div class="row">
-      <div class="col-xs-1 col-sm-offset-3">
-        <%= label_tag :email %>
-      </div>
-      <div class="col-xs-5">
-        <%= text_field_tag :email, params[:email], class: "log_in_input_field" %>
-      </div>
-    </div>
-    <div class="row" style="margin-top: 1rem; margin-bottom: 1rem;">
-      <div class="col-xs-1 col-sm-offset-3">
+  <br>
+  <div class="row"> 
+    <div class="col-xs-1 col-sm-offset-3">
       <%= label_tag :password %>
-      </div>
-      <div class="col-xs-5">
-      <%= password_field_tag :password, params[:password], class: "log_in_input_field" %>
-      </div>
     </div>
-    <div class="row">
-      <div class="col-xs-3 col-sm-offset-3">
-       <%= submit_tag "Log In", class: "btn btn-primary log_in_buttons" %>
-      </div>
-      <div class="col-xs-3 link_to_sign_up">        
-       <%= link_to "<input type='button' class='btn btn-default log_in_buttons' value='Sign Up'>".html_safe, new_user_path %>
+    <div class="col-xs-5">
+      <%= password_field_tag :password, params[:password], class: "form-control input-lg text-center" %> 
     </div>
-    <br/>
-    
-  <% end %>
-
-</body>
-</html>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-3 col-sm-offset-3">
+      <%= submit_tag "Log In", class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="col-xs-3 link_to_sign_up">        
+      <%= link_to "<input type='button' class='btn btn-default btn-block' value='Sign Up'>".html_safe, new_user_path, style: "text-decoration: none;" %>
+    </div>
+  </div>
+  <br/>
+  
+<% end %>
