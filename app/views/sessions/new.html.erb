@@ -1,15 +1,33 @@
-<h1>Log In</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Citsocial - Log In</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'bootstrap-theme.min', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-<%= form_tag log_in_path do %>
-  <p>
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <%= submit_tag "Login", class: "btn btn-primary" %>
-  <br/>
-  <%= link_to "Sign Up", new_user_path, :method => :delete%>
-<% end %>
+  <h1>Log In</h1>
+
+  <%= form_tag log_in_path do %>
+    <p>
+      <%= label_tag :email %><br />
+      <%= text_field_tag :email, params[:email] %>
+    </p>
+    <p>
+      <%= label_tag :password %><br />
+      <%= password_field_tag :password %>
+    </p>
+    <%= submit_tag "Login", class: "btn btn-primary" %>
+    <br/>
+    <%= link_to "Sign Up", new_user_path %>
+  <% end %>
+
+<%= yield %>
+
+</body>
+</html>
