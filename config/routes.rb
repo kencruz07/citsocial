@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'main/new'
-
-  get 'log_in' => 'sessions#new', :as => 'log_in'
+  post 'log_in' => 'sessions#create', :as => 'log_in'
   get 'log_out' => 'sessions#destroy', :as => 'log_out'
   get 'sign_up' => 'users#new', :as => 'sign_up'
   get 'main' => 'main#new', :as => 'main'
@@ -12,11 +10,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'sessions#new'
-
-  resources :users
-  resources :sessions
-  resources :main
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
