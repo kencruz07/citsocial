@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   validates_confirmation_of :password
+  validates_confirmation_of :password_confirmation
+  validates_presence_of :first_name
+  validates_presence_of :last_name
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
@@ -27,5 +30,9 @@ class User < ActiveRecord::Base
       nil
     end
   end
-  
+
+  def display_full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
 end

@@ -8,7 +8,7 @@
       <%= label_tag :email %>
     </div>
     <div class="col-xs-5">
-      <%= text_field_tag :email, params[:email], class: "form-control input-lg text-center" %>
+      <%= text_field_tag :email, params[:email], :class => "form-control input-lg text-center" %>
     </div>
   </div>
   <br>
@@ -17,16 +17,16 @@
       <%= label_tag :password %>
     </div>
     <div class="col-xs-5">
-      <%= password_field_tag :password, params[:password], class: "form-control input-lg text-center" %> 
+      <%= password_field_tag :password, params[:password], :class => "form-control input-lg text-center" %> 
     </div>
   </div>
   <br>
   <div class="row">
     <div class="col-xs-3 col-sm-offset-3">
-      <%= submit_tag "Log In", class: "btn btn-primary btn-block" %>
+      <%= submit_tag "Log In", :class => "btn btn-primary btn-block" %>
     </div>
     <div class="col-xs-3 link_to_sign_up">        
-      <%= link_to "Sign Up", new_user_path, class: "btn btn-default btn-block" %>
+      <%= link_to "Sign Up", new_user_path, :class => "btn btn-default btn-block" %>
     </div>
   </div>
   <br/>
