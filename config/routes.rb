@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'posts/new'
+
   post 'log_in' => 'sessions#create', :as => 'log_in'
   delete 'log_out' => 'sessions#destroy', :as => 'log_out'
   get 'main' => 'main#new', :as => 'main'
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   resources :users
+  resources :posts
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

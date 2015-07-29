@@ -1,36 +1,83 @@
-<h1>Sign Up</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Citsocial - Log In</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'bootstrap.min', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'bootstrap-theme.min', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'bootstrap.min', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
+  <div class="row">
+    <div class="col-xs-12"><h1>citsocial - Sign Up</h1></div>
+  </div>
+  <div></div>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="col-xs-1 col-sm-offset-3">
+        <%= f.label :first_name %>
+      </div>
+      <div class="col-xs-5">
+        <%= f.text_field :first_name, class: "log_in_input_field" %>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-xs-1 col-sm-offset-3">
+        <%= f.label :last_name %>
+      </div>
+      <div class="col-xs-5">
+        <%= f.text_field :last_name, class: "log_in_input_field" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-1 col-sm-offset-3">
+        <%= f.label :email %>
+      </div>
+      <div class="col-xs-5">
+        <%= f.text_field :email, class: "log_in_input_field" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-1 col-sm-offset-3">
+        <%= f.label :password %>
+      </div>
+      <div class="col-xs-5">
+        <%= f.password_field :password, class: "log_in_input_field" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-1 col-sm-offset-3">
+        <%= f.label :password_confirmation %>
+      </div>
+      <div class="col-xs-5">
+        <%= f.password_field :password_confirmation, class: "log_in_input_field" %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-6 col-sm-offset-3">
+       <%= f.submit "Sign Up", id: "sign_up_button", class: "btn btn-primary" %>
+      </div>
+    </div>
+
   <% end %>
-  <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p class="button"><%= f.submit %></p>
-<% end %>
+
+ 
+
+</body>
+</html>
