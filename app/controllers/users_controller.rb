@@ -6,9 +6,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      flash[:alert] = "Success!"
+      redirect_to root_url
     else
-      render "new"
+      if @user.errors.any?
+        flash[:alert] = @user.errors.full_messages
+        render "new"
+      end
+      
     end
   end
 
