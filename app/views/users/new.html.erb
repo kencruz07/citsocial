@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-xs-12"><h1 class="text-center">citsocial - Sign Up</h1></div>
+</div>
+<div></div>
+
+<%= form_for @user do |f| %>
+
+  <div class="row">
+    <div class="col-xs-1 col-sm-offset-3">
+      <%= f.label :first_name %>
+    </div>
+    <div class="col-xs-5">
+      <%= f.text_field :first_name, :class => "form-control input-lg text-center" %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-1 col-sm-offset-3">
+      <%= f.label :last_name %>
+    </div>
+    <div class="col-xs-5">
+      <%= f.text_field :last_name, :class => "form-control input-lg text-center" %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-1 col-sm-offset-3">
+      <%= f.label :email %>
+    </div>
+    <div class="col-xs-5">
+      <%= f.text_field :email, :class => "form-control input-lg text-center" %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-1 col-sm-offset-3">
+      <%= f.label :password %>
+    </div>
+    <div class="col-xs-5">
+      <%= f.password_field :password, :class => "form-control input-lg text-center" %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-1 col-sm-offset-3">
+      <%= f.label :password_confirmation %>
+    </div>
+    <div class="col-xs-5">
+      <%= f.password_field :password_confirmation, :class => "form-control input-lg text-center" %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-6 col-sm-offset-3">
+     <%= f.submit "Sign Up", id: "sign_up_button", :class => "btn btn-primary btn-block" %>
+    </div>
+  </div>
+
+<% end %>
