@@ -1,2 +1,16 @@
-<h1><%= current_user.display_full_name %></h1>
-<%= link_to "Log Out", log_out_path, :method => :delete%>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <h1>
+      <%= link_to current_user.display_full_name, { :controller => :users, :action => :show, :id => current_user.id }, :style => "color: #333333;" %>
+    </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-3 col-xs-offset-3">
+    <%= link_to "Create Post", new_post_path,  :class => "btn btn-success btn-block" %>
+  </div>
+  <div class="col-xs-3">
+    <%= link_to "Discover Posts", posts_path,  :class => "btn btn-info btn-block" %>
+  </div>
+</div>
