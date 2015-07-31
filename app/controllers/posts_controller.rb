@@ -19,10 +19,8 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post
     else
-      if @post.errors.any?
-        flash[:alert] = @post.errors.full_messages
-        render "new"
-      end
+      flash[:alert] = @post.errors.full_messages
+      render "new"
     end
   end
 
@@ -36,10 +34,8 @@ class PostsController < ApplicationController
     if @post.update_attributes(post_params)
       redirect_to @post
     else
-      if @post.errors.any?
-        flash[:alert] = @post.errors.full_messages
-        render "edit"
-      end
+      flash[:alert] = @post.errors.full_messages
+      render "edit"
     end
   end
 
