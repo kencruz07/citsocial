@@ -13,10 +13,8 @@ class UsersController < ApplicationController
       flash[:alert] = "Success!"
       redirect_to root_url
     else
-      if @user.errors.any?
-        flash[:alert] = @user.errors.full_messages
-        render "new"
-      end      
+      flash[:alert] = @user.errors.full_messages
+      render "new"   
     end
   end
 
