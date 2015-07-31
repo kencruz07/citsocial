@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-xs-6 col-sm-offset-3">    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= link_to "#{post.user.display_full_name}:", user_path(post.user) %>
+      </div>
+      <div class="panel-body"> 
+        <h3><u><%= link_to post.title, post %></u></h3>       
+        <p class="lead"><%= post.content %></p>
+      </div>
+      <div class="panel-footer">
+        <% if current_user == post.user %>
+         <%= link_to "Delete", post, :method => :delete, :class => "btn btn-danger btn-xs pull-right" %>
+          <%= link_to "Edit", edit_post_path(post), :class => "btn btn-info btn-xs pull-right" %>
+        <% end %>
+        <%= post.created_at %>
+      </div>
+    </div>
+  </div>
+</div>
