@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
+  validates_presence_of :title
+
   belongs_to :user
-  default_scope -> { order(created_at: :desc) }
-  #validates :user_id, presence: true
- 
+  scope :latest, -> { order( :created_at => :desc ) } 
 end

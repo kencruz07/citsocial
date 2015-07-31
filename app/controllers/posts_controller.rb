@@ -1,51 +1,57 @@
-class PostsController < ApplicationController
-  def new
-    @post = Post.new
+class PostsController < ApplicationController  
+  def index
+    if session[:user_id].blank?
+      redirect_to root_url
+    end
+    @posts = Post.all
   end
 
   def show 
-    @post = Post.find(params[:id])
+    @post = Post.find params[:id]
   end
 
-  def index
-    @post = Post.all
+  def new    
+    @post = current_user.posts.build
   end
 
 	def create
-		@post = Post.new(post_params)
-
+    @post = current_user.posts.build post_params
     if @post.save
-      redirect_to :action => :show, :id => @post.id
+      redirect_to @post
     else
-      #if @user.errors.any?
-      #  flash[:alert] = @user.errors.full_messages
-        redirect_to index_page
-      #end      
+      if @post.errors.any?
+        flash[:alert] = @post.errors.full_messages
+        render "new"
+      end
     end
 	end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find params[:id]
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find params[:id]
+
     if @post.update_attributes(post_params)
-      redirect_to post_path
+      redirect_to @post
     else
-      render 'edit'
+      if @post.errors.any?
+        flash[:alert] = @post.errors.full_messages
+        render "edit"
+      end
     end
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    user = @post.user.id
+    @post = Post.find params[:id] 
+    user = @post.user
     @post.destroy
-    redirect_to :controller => :users, :action => :show, :id => user
+    redirect_to user 
   end
 
   def post_params
-    params.require(:post).permit(:title, :content).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :content)
   end
 end
   
