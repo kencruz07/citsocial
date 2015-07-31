@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   	@user = User.new
   end
 
+  def show
+    @user = User.find params[:id]
+  end
+
   def create
-    @user = User.new(user_params)
+    @user = User.new user_params
     if @user.save
       flash[:alert] = "Success!"
       redirect_to root_url
@@ -12,15 +16,12 @@ class UsersController < ApplicationController
       if @user.errors.any?
         flash[:alert] = @user.errors.full_messages
         render "new"
-      end
-      
+      end      
     end
   end
 
-  private
-
   def user_params
-  	params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  	params.require(:user).permit :first_name, :last_name, :email, :password, :password_confirmation
   end
 
 end

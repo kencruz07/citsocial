@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   post 'log_in' => 'sessions#create', :as => 'log_in'
   delete 'log_out' => 'sessions#destroy', :as => 'log_out'
-  get 'index' => 'main#new', :as => 'index'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
