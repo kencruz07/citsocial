@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build
   end
 
-	def create
+  def create
     @post = current_user.posts.build post_params
     if @post.save
       redirect_to @post
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
         render "new"
       end
     end
-	end
+  end
 
   def edit
     @post = Post.find params[:id]
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit :title, :content
   end
 end
   
