@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def display_full_name
+  def name
     "#{self.first_name} #{self.last_name}"
   end
 

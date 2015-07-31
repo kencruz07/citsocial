@@ -2,7 +2,7 @@
 	<div class="col-xs-6 col-sm-offset-3">    
     <div class="panel panel-default">
       <div class="panel-heading">
-        <%= link_to "#{post.user.display_full_name}:", user_path(post.user) %>
+        <%= link_to "#{post.user.name}:", user_path(post.user) %>
       </div>
       <div class="panel-body"> 
         <h3><u><%= link_to post.title, post %></u></h3>       
