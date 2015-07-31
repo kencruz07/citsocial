@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  has_many :posts, dependent: :destroy
+
   def encrypt_password
     if password.present?
       self.password_salt = BCrypt::Engine.generate_salt
@@ -31,7 +33,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def display_full_name
+  def name
     "#{self.first_name} #{self.last_name}"
   end
 

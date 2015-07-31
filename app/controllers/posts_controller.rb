@@ -1,0 +1,53 @@
+class PostsController < ApplicationController  
+  def index
+    if session[:user_id].blank?
+      redirect_to root_url
+    end
+    @posts = Post.all
+  end
+
+  def show 
+    @post = Post.find params[:id]
+  end
+
+  def new    
+    @post = current_user.posts.build
+  end
+
+  def create
+    @post = current_user.posts.build post_params
+    if @post.save
+      redirect_to @post
+    else
+      flash[:alert] = @post.errors.full_messages
+      render "new"
+    end
+  end
+
+  def edit
+    @post = Post.find params[:id]
+  end
+
+  def update
+    @post = Post.find params[:id]
+
+    if @post.update_attributes(post_params)
+      redirect_to @post
+    else
+      flash[:alert] = @post.errors.full_messages
+      render "edit"
+    end
+  end
+
+  def destroy
+    @post = Post.find params[:id] 
+    user = @post.user
+    @post.destroy
+    redirect_to user 
+  end
+
+  def post_params
+    params.require(:post).permit :title, :content
+  end
+end
+  
