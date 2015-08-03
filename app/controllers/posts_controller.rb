@@ -4,6 +4,7 @@ class PostsController < ApplicationController
       redirect_to root_url
     end
     @posts = current_user.timeline
+    # @posts = Post.timeline current_user.following_ids, current_user.id
   end
 
   def show
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       flash[:alert] = @post.errors.full_messages
-      render "new"
+      render 'new'
     end
   end
 
@@ -35,7 +36,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       flash[:alert] = @post.errors.full_messages
-      render "edit"
+      render 'edit'
     end
   end
 

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   post 'log_in' => 'sessions#create', :as => 'log_in'
   delete 'log_out' => 'sessions#destroy', :as => 'log_out'
 
@@ -11,9 +10,8 @@ Rails.application.routes.draw do
   root 'sessions#new'
 
   resources :users do
-    member do
-      get :following, :followers
-    end
+    resources :following, :only => [:index]
+    resources :followers, :only => [:index]
   end
   resources :posts
   resources :relationships

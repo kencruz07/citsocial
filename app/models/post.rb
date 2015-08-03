@@ -4,4 +4,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   scope :latest, -> { order( :created_at => :desc ) }
 
+  # def timeline following_ids, id
+  #   Post.where "user_id IN (?) OR user_id = ?",
+  #     following_ids, id
+  # end
 end
