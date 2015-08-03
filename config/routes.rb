@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   post 'log_in' => 'sessions#create', :as => 'log_in'
   delete 'log_out' => 'sessions#destroy', :as => 'log_out'
 
@@ -10,8 +10,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'sessions#new'
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :posts
+  resources :relationships
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
