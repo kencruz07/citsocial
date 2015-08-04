@@ -3,4 +3,4 @@
 <%= render :partial => 'comments/form',
   :locals => { :post => @post, :comment => @comment } %>
 
-<%= render @comments.latest %>
+<%= render @post.comments.latest %>
