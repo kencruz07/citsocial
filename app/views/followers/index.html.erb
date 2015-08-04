@@ -1,2 +1,3 @@
-<%= render :partial => 'shared/user_list',
-           :locals => { :title => @title, :users => @follow } %>
+<%= render :partial => 'users/user_list',
+           :locals => { :title => "#{@user.name}'s followers",
+                        :users => @user.followers } %>

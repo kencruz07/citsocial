@@ -48,12 +48,12 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
-  def follow other_user
-    self.active_relationships.create :followed_id => other_user.id
+  def follow other_user_id
+    self.active_relationships.create :followed_id => other_user_id
   end
 
-  def unfollow other_user
-    self.active_relationships.find_by(:followed_id => other_user.id).destroy
+  def unfollow other_user_id
+    self.active_relationships.find_by(:followed_id => other_user_id).destroy
   end
 
   def following? other_user
@@ -61,7 +61,6 @@ class User < ActiveRecord::Base
   end
 
   def timeline
-    Post.where 'user_id IN (?) OR user_id = ?',
-      following_ids, id
+    Post.timeline following_ids, id
   end
 end
