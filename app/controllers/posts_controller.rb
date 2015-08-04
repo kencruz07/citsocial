@@ -1,16 +1,16 @@
-class PostsController < ApplicationController  
+class PostsController < ApplicationController
   def index
     if session[:user_id].blank?
       redirect_to root_url
     end
-    @posts = Post.all
+    @posts = current_user.timeline
   end
 
-  def show 
+  def show
     @post = Post.find params[:id]
   end
 
-  def new    
+  def new
     @post = current_user.posts.build
   end
 
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       flash[:alert] = @post.errors.full_messages
-      render "new"
+      render 'new'
     end
   end
 
@@ -35,19 +35,19 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       flash[:alert] = @post.errors.full_messages
-      render "edit"
+      render 'edit'
     end
   end
 
   def destroy
-    @post = Post.find params[:id] 
+    @post = Post.find params[:id]
     user = @post.user
     @post.destroy
-    redirect_to user 
+    redirect_to user
   end
 
   def post_params
     params.require(:post).permit :title, :content
   end
 end
-  
+
