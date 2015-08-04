@@ -12,12 +12,6 @@ a{
   font-size: 1.7rem;
   color: #888888
 }
-/*.show-post{
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}*/
-.panel, .panel .panel-heading, .panel .panel-footer{
+.post-panel, .post-panel-heading, .post-panel-footer{
   border-radius: 0;
 }
