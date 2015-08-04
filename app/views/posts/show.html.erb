@@ -1,23 +1,6 @@
 <%= render @post %>
-<%= form_for [@post, @comment] do |f| %>
-<div class='row'>
-  <div class='col-xs-6 col-xs-offset-3'>
-      <div class='panel panel-default post-comment-box'>
-        <div class="panel-body">
-          <div class='row'>
-            <div class='col-xs-9'>
-              <%= f.text_area :content, :rows => '1', :class => 'form-control input-sm post-comment-content',
-      :placeholder => 'Comment' %>
-            </div>
-            <div class='col-xs-3'>
-              <%= f.submit "Post", :class => 'btn btn-sm btn-primary btn-block post-comment',
-      :placeholder => 'Comment' %>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-</div>
-<% end %>
+
+<%= render :partial => 'comments/form',
+  :locals => { :post => @post, :comment => @comment } %>
 
 <%= render @comments.latest %>
