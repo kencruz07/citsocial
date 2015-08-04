@@ -12,6 +12,25 @@
   font-size: 1.7rem;
   color: #888888
 }
-.post-panel, .post-panel-heading, .post-panel-footer{
+.post-panel, .post-panel-heading, .post-panel-footer, .post-comment-box,
+.post-comment, .post-comment-content{
   border-radius: 0;
+}
+.post-panel{
+  margin-bottom: 5px;
+}
+.post-comment-box{
+  margin-bottom: 0;
+}
+.post-comment{
+  margin-bottom: 0;
+  border-top: none;
+}
+.post-comment-content{
+  resize: none;
+  margin-bottom: 0;
+}
+.comments-time{
+  font-size: 1rem;
+  color: #888888;
 }

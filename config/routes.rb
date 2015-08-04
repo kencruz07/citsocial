@@ -13,8 +13,12 @@ Rails.application.routes.draw do
     resources :following, :only => [:index]
     resources :followers, :only => [:index]
   end
-  resources :posts
+  resources :posts do
+    resources :comments, :only => [:create]
+  end
   resources :relationships
+  resources :comments, :only => [:destroy]
+  # resources :comments
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

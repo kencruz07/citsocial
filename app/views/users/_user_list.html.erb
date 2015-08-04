@@ -12,8 +12,7 @@
         <th></th>
       </tr>
       <% users.alphabetical.each do |user|%>
-        <%= render :partial => 'users/user',
-                   :locals => { :user => user } %>
+        <%= render :partial => 'users/user', :locals => { :user => user } %>
       <% end %>
     </table>
   </div>
