@@ -1,5 +1,5 @@
 <tr>
-  <th><%= link_to user.name, user_path(user) %></th>
+  <th><%= link_to user.name, user_path(user), :class => "user-list-user" %></th>
   <th>
     <% unless current_user == user %>
       <div id='follow_form'>
