@@ -2,7 +2,7 @@
 	<div class='col-xs-6 col-sm-offset-3'>
     <div class='panel panel-default'>
       <div class='panel-heading'>
-        <%= link_to "#{post.user.name}:", user_path(post.user) %>
+        <%= link_to "#{post.user.name}:", user_path(post.user), :class => "post-user"%>
         <% if current_user == post.user %>
           <div class='btn-group pull-right'>
             <button type='button' class='btn btn-primary btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
@@ -17,8 +17,8 @@
         <% end %>
       </div>
       <div class='panel-body'>
-        <h3><u><%= link_to post.title, post %></u></h3>
-        <p class='lead'><%= post.content %></p>
+        <p class="post-title"><%= link_to post.title, post %></p>
+        <p class='post-content'><%= post.content %></p>
       </div>
       <div class='panel-footer'>
         <span>. . .</span>
