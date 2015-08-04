@@ -4,7 +4,6 @@ class PostsController < ApplicationController
       redirect_to root_url
     end
     @posts = current_user.timeline
-    # @posts = Post.timeline current_user.following_ids, current_user.id
   end
 
   def show
