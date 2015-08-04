@@ -6,9 +6,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="body-padding">
 
-  <%= render 'shared/header' %>	
+  <%= render 'shared/header' %>
 
   <% error_message = [flash[:alert]].flatten.compact  %>
   <% if error_message.present? %>
