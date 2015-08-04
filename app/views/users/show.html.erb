@@ -1,7 +1,15 @@
-<div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
+<div class='row'>
+  <div class='col-xs-6 col-xs-offset-3'>
     <h1>Posts by <%= @user.name %>:</h1>
   </div>
 </div>
- 
+<div class='row'>
+  <div class='col-xs-1 col-xs-offset-3'>
+    <h5><%= link_to "Following: #{@user.following.count}", user_following_index_path(@user), :class => "user-links"%></h5>
+  </div>
+  <div class='col-xs-1'>
+    <h5><%= link_to "Followers: #{@user.followers.count}", user_followers_path(@user), :class => "user-links"%></h5>
+  </div>
+</div>
+
 <%= render @user.posts.latest %>

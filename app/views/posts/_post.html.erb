@@ -1,19 +1,28 @@
-<div class="row">
-	<div class="col-xs-6 col-sm-offset-3">    
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <%= link_to "#{post.user.name}:", user_path(post.user) %>
-      </div>
-      <div class="panel-body"> 
-        <h3><u><%= link_to post.title, post %></u></h3>       
-        <p class="lead"><%= post.content %></p>
-      </div>
-      <div class="panel-footer">
+<div class='row'>
+	<div class='col-xs-6 col-sm-offset-3'>
+    <div class='panel panel-default post-panel'>
+      <div class='panel-heading post-panel-heading'>
+        <%= link_to "#{post.user.name}:", user_path(post.user), :class => "post-user post-links"%>
         <% if current_user == post.user %>
-         <%= link_to "Delete", post, :method => :delete, :class => "btn btn-danger btn-xs pull-right" %>
-          <%= link_to "Edit", edit_post_path(post), :class => "btn btn-info btn-xs pull-right" %>
+          <div class='btn-group pull-right'>
+            <button type='button' class='btn btn-primary btn-xs dropdown-toggle post-dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+             <span class='caret'></span>
+            </button>
+            <ul class='dropdown-menu'>
+              <li><%= link_to 'Edit', edit_post_path(post) %></li>
+              <li role='separator' class='divider'></li>
+              <li><%= link_to 'Delete', post, :method => :delete %></li>
+            </ul>
+          </div>
         <% end %>
-        <%= post.created_at %>
+      </div>
+      <div class='panel-body'>
+        <p class="post-title"><%= link_to post.title, post, :class => "post-links" %></p>
+        <p class='post-content'><%= post.content %></p>
+      </div>
+      <div class='panel-footer post-panel-footer'>
+        <span>. . .</span>
+        <span class='pull-right'><%= post.created_at.in_time_zone 'Hong Kong'%></span>
       </div>
     </div>
   </div>
