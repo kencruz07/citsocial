@@ -35,14 +35,3 @@ Post.find_each do |post|
     end
   end
 end
-#
-# Post.find_each do |post|
-#   puts post.title
-#   User.find_each do |user|
-#     puts user.first_name
-#     2.times do |comment_number|
-#       puts "comment"
-#     end
-#   end
-# end
-#
