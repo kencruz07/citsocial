@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   has_many :following, :through => :active_relationships, :source => :followed
   has_many :followers, :through => :passive_relationships
 
+  has_and_belongs_to_many :likes, :class_name => 'Post',
+                                   :foreign_key => 'user_id',
+                                   :dependent =>  :destroy
+
   scope :alphabetical, -> { order( :last_name => :asc ) }
 
   def encrypt_password
@@ -64,5 +68,17 @@ class User < ActiveRecord::Base
 
   def timeline
     Post.timeline following_ids, id
+  end
+
+  def like post
+    self.likes << post
+  end
+
+  def unlike post
+    self.likes.destroy post
+  end
+
+  def like? post
+    self.likes.find_by(:id => post.id).present?
   end
 end

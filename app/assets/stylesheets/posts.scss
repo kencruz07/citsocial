@@ -12,8 +12,8 @@
   font-size: 1.7rem;
   color: #888888
 }
-.post-panel, .post-panel-heading, .post-panel-footer, .post-comment-box,
-.post-comment, .post-comment-content{
+.post-panel, .post-panel-heading, .post-panel-footer,
+.post-comment-box, .post-comment, .post-comment-content{
   border-radius: 0;
 }
 .post-panel{
@@ -33,4 +33,8 @@
 .comments-time{
   font-size: 1rem;
   color: #888888;
+}
+.comment-delete-button{
+  border: none;
+  opacity: .8;
 }
