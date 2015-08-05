@@ -21,7 +21,8 @@
         <p class='post-content'><%= post.content %></p>
       </div>
       <div class='panel-footer post-panel-footer'>
-        <span><%= "#{post.comments.count} comments" %></span>
+        <%= render :partial => 'posts/like_button', :locals => { :post => post } %>
+        <span><%= post.commenters %></span>
         <span class='pull-right'><%= "#{distance_of_time_in_words post.created_at, Time.now} ago" %></span>
       </div>
     </div>
