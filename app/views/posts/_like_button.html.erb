@@ -8,7 +8,7 @@
   <% path = like_path(post) %>
 <% end %>
 
-<%= link_to path, :class => "btn btn-#{btn_class}",
+<%= link_to path, :class => "btn btn-#{btn_class} comment-button",
     :method => method do %>
     <span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>
     <span><%= post.likers %></span>

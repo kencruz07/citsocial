@@ -1,6 +1,2 @@
 <%= render @post %>
 
-<%= render :partial => 'comments/form',
-  :locals => { :post => @post, :comment => @comment } %>
-
-<%= render @post.comments.latest %>
