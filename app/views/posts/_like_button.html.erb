@@ -1,0 +1,15 @@
+<% method = :post %>
+<% btn_class = 'default' %>
+<% path = post_likes_path(post) %>
+
+<% if current_user.like?(post) %>
+  <% method = :delete %>
+  <% btn_class = 'primary' %>
+  <% path = like_path(post) %>
+<% end %>
+
+<%= link_to path, :class => "btn btn-#{btn_class}",
+    :method => method do %>
+    <span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>
+    <span><%= post.likers %></span>
+  <% end %>

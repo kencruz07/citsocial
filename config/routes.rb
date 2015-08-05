@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+
+  get 'likes/destroy'
+
   post 'log_in' => 'sessions#create', :as => 'log_in'
   delete 'log_out' => 'sessions#destroy', :as => 'log_out'
 
@@ -15,9 +19,11 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resources :comments, :only => [:create]
+    resources :likes, :only => [:create]
   end
   resources :relationships
   resources :comments, :only => [:destroy]
+  resources :likes, :only => [:destroy]
   # resources :comments
 
   # Example of regular route:
