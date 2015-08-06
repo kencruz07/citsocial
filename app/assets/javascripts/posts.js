@@ -14,11 +14,28 @@ function hello(){
 }
 
 function display_comments(id){
-  $('.comment-form-list[data-post-id='+id+']').show();
-  $('.post-panel[data-post-id='+id+']').css('margin-bottom', '-1px');
+  $('#'+id+'.comment-form-list').show();
+  $('#'+id+'.post-panel').css('margin-bottom', '-1px');
 }
 
 function hide_comments(id){
-  $('.comment-form-list[data-post-id='+id+']').hide();
-  $('.post-panel[data-post-id='+id+']').css('margin-bottom', '15px');
+  $('#'+id+'.comment-form-list').hide();
+  $('#'+id+'.post-panel').css('margin-bottom', '15px');
 }
+
+var ready;
+ready = function() {
+
+  $('.comment-show-link').on('click', function(e){
+    e.preventDefault();
+    display_comments($(this).attr('id'));
+  });
+  $('.comment-hide-link').on('click', function(e){
+    e.preventDefault();
+    hide_comments($(this).attr('id'));
+  });
+
+};
+
+$(document).ready(ready);
+$(document).on("page:load", ready);

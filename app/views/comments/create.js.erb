@@ -1,2 +1,3 @@
 $('<%= escape_javascript(render @comment) %>').prependTo('.comment-index');
 $('#comment-create-content').val('');
+$('#<%= @comment.post.id %>.comment-show-link').text('<%= @comment.post.commenters %>');
