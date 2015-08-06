@@ -1,34 +1,20 @@
-<% remote = true %>
-<% if title == 'Edit'%>
-<% remote = false %>
-<% end %>
-<%= form_for post, :remote => remote do |f| %>
-  <% if title == 'Edit'%>
-    <div class='row'>
-      <div class='col-xs-6 col-xs-offset-3'>
-        <h1>
-          <%= "#{title} post" %>
-        </h1>
-      </div>
-    </div>
-  <% end %>
-  <div class='row'>
-    <div class='col-xs-6 col-xs-offset-3'>
-      <%= f.text_field :title, :id => 'post-create-title',
-        :class => 'form-control input-lg', :placeholder => 'Title' %>
-    </div>
+<div class='row'>
+  <div class='col-xs-6 col-xs-offset-3'>
+    <%= f.text_field :title, :id => 'post-create-title',
+      :class => 'form-control input-lg', :placeholder => 'Title' %>
   </div>
-  <div class='row'>
-    <div class='col-xs-6 col-xs-offset-3'>
-      <%= f.text_area :content, :id => 'post-create-content',
-        :class => 'form-control', :rows => '5', :placeholder => 'Content' %>
-    </div>
+</div>
+<div class='row'>
+  <div class='col-xs-6 col-xs-offset-3'>
+    <%= f.text_area :content, :id => 'post-create-content',
+      :class => 'form-control', :rows => '5', :placeholder => 'Content' %>
   </div>
-  <br>
-  <div class='row'>
-    <div class='col-xs-6 col-xs-offset-3'>
-     <%= f.submit 'Save', :id => 'post-create-submit', :class => 'btn btn-primary btn-block' %>
-    </div>
+</div>
+<br>
+<div class='row'>
+  <div class='col-xs-6 col-xs-offset-3'>
+   <%= f.submit 'Save', :id => 'post-create-submit', :class => 'btn btn-primary btn-block' %>
   </div>
+</div>
 
-<% end %>
+

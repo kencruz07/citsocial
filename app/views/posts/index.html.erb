@@ -6,7 +6,9 @@
   </div>
 </div>
 
-<%= render :partial => 'posts/form', :locals => { :title => 'Write', :post => @post } %>
+<%= form_for @post, :remote => true do |f| %>
+  <%= render :partial => 'posts/form', :locals => { :f => f } %>
+<% end %>
 
 <div id='post-index'>
   <%= render @posts.latest %>

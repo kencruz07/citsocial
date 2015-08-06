@@ -81,4 +81,12 @@ class User < ActiveRecord::Base
   def like? post
     self.likes.find_by(:id => post.id).present?
   end
+
+  def toggle_like post
+    if self.like? post
+      self.unlike post
+    else
+      self.like post
+    end
+  end
 end

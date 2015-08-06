@@ -1,15 +1,11 @@
-<% method = :post %>
 <% btn_class = 'default' %>
-<% path = post_likes_path(post) %>
 
 <% if current_user.like?(post) %>
-  <% method = :delete %>
   <% btn_class = 'primary' %>
-  <% path = like_path(post) %>
 <% end %>
 
-<%= link_to path, :id => post.id, :class => "btn btn-#{btn_class} btn-md comment-button",
-    :method => method, :remote => true do %>
-    <span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>
-    <span class='post-likers'><%= post.likers %></span>
-  <% end %>
+<%= link_to post_likes_path(post), :id => post.id, :class => "btn btn-#{btn_class} btn-md comment-button",
+  :method => :post, :remote => true do %>
+  <span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>
+  <span class='post-likers'><%= post.likers %></span>
+<% end %>

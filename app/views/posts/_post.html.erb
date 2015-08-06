@@ -1,6 +1,6 @@
 <div class='row'>
 	<div class='col-xs-6 col-sm-offset-3'>
-    <div class='panel panel-default post-panel' id = <%= post.id %>>
+    <div class='panel panel-default post-panel' data-post-id='<%= post.id %>'>
       <div class='panel-heading post-panel-heading'>
         <%= link_to "#{post.user.name}:", post.user, :class => 'post-user post-links'%>
         <% if current_user == post.user %>
@@ -21,27 +21,29 @@
         <p class='post-content'><%= post.content %></p>
       </div>
       <div class='panel-footer post-panel-footer'>
-        <div class='like-unlike-container' id=<%= post.id %>>
+        <div class='like-unlike-container' data-post-id='<%= post.id %>'>
           <%= render :partial => 'likes/like_button', :locals => { :post => post } %>
         </div>
-        <span><%= link_to post.commenters.upcase, nil, :id => post.id ,:class => 'comment-show-link' %></span>
+        <span><%= link_to post.commenters.upcase, nil, :class => 'comment-show-link', :data => { :comments => post.comments.count, :post_id => post.id } %></span>
         <span class='post-time pull-right'><%= "#{distance_of_time_in_words post.created_at, Time.now} ago".upcase %></span>
       </div>
     </div>
   </div>
 </div>
 
-<div class='comment-form-list' id=<%= post.id %>>
-  <%= render :partial => 'comments/form',
+<div class='comment-form-list <%= 'hidden' if post.comments.present? %>' data-post-id='<%= post.id %>'>
+  <div class="comment-form" data-post-id='<%= post.id %>'>
+    <%= render :partial => 'comments/form',
     :locals => { :post => post, :comment => post.comments } %>
+  </div>
 
-  <div class='comment-index'>
+  <div class='comment-index' data-post-id='<%= post.id %>'>
     <%= render post.comments.latest %>
   </div>
 
-  <div class='row'>
+  <div class='row <%= 'hidden' if post.comments.count == 0 %>'>
     <div class='col-xs-6 col-xs-offset-3'>
-        <div class='panel panel-default post-comment'>
+        <div class='panel panel-default post-comment' data-post-id='<%= post.id %>'>
           <div class='panel-body'>
             <p class='comment-hide-link-container'><%= link_to 'HIDE COMMENTS', nil, :class => 'comment-hide-link', :onclick => "hide_comments(#{post.id})", :data => { :post_id => post.id }%></p>
           </div>
