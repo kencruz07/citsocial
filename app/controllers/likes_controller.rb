@@ -1,13 +1,18 @@
 class LikesController < ApplicationController
   def create
     @post = Post.find params[:post_id]
-    current_user.like @post
-    redirect_to :back
-  end
+    respond_to do |format|
 
-  def destroy
-    @post = Post.find params[:id]
-    current_user.unlike @post
-    redirect_to :back
+      if current_user.toggle_like @post
+        format.html { redirect_to :back }
+        format.js {}
+        format.json { render :json => @post, :status => :created,
+          :location => :back }
+      else
+        format.html { redirect_to :back }
+        format.json { render :json => @post.errors,
+          :status => :unprocessable_entity}
+      end
+    end
   end
 end
