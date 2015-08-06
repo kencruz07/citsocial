@@ -24,7 +24,7 @@
         <div class='like-unlike-container' data-post-id='<%= post.id %>'>
           <%= render :partial => 'likes/like_button', :locals => { :post => post } %>
         </div>
-        <span><%= link_to post.commenters.upcase, nil, :class => 'comment-show-link', :data => { :comments => post.comments.count, :post_id => post.id } %></span>
+        <span><%= link_to post.commenters.upcase, '#', :class => 'comment-show-link', :data => { :comments => post.comments.count, :post_id => post.id } %></span>
         <span class='post-time pull-right'><%= "#{distance_of_time_in_words post.created_at, Time.now} ago".upcase %></span>
       </div>
     </div>
@@ -45,7 +45,7 @@
     <div class='col-xs-6 col-xs-offset-3'>
         <div class='panel panel-default post-comment' data-post-id='<%= post.id %>'>
           <div class='panel-body'>
-            <p class='comment-hide-link-container'><%= link_to 'HIDE COMMENTS', nil, :class => 'comment-hide-link', :onclick => "hide_comments(#{post.id})", :data => { :post_id => post.id }%></p>
+            <p class='comment-hide-link-container'><%= link_to 'HIDE COMMENTS', '#', :class => 'comment-hide-link', :data => { :post_id => post.id }%></p>
           </div>
         </div>
     </div>
