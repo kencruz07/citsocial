@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @comment.post }
         format.js {}
         format.json { render :json => @comment, :status => :created,
-          :location => @comment.post}
+          :location => @comment.post }
       else
         format.html { redirect_to @post }
         format.json { render :json => @comment.errors,

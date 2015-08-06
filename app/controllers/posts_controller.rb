@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build post_params
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user }
+        format.html { redirect_to posts_path }
         format.js {}
         format.json { render :json => @post, :status => :created,
           :location => @post}

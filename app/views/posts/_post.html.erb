@@ -21,9 +21,11 @@
         <p class='post-content'><%= post.content %></p>
       </div>
       <div class='panel-footer post-panel-footer'>
-        <%= render :partial => 'posts/like_button', :locals => { :post => post } %>
-        <span><%= link_to post.commenters, nil, :id => post.id ,:class => 'comment-show-link' %></span>
-        <span class='pull-right'><%= "#{distance_of_time_in_words post.created_at, Time.now} ago" %></span>
+        <div class='like-unlike-container' id=<%= post.id %>>
+          <%= render :partial => 'likes/like_button', :locals => { :post => post } %>
+        </div>
+        <span><%= link_to post.commenters.upcase, nil, :id => post.id ,:class => 'comment-show-link' %></span>
+        <span class='post-time pull-right'><%= "#{distance_of_time_in_words post.created_at, Time.now} ago".upcase %></span>
       </div>
     </div>
   </div>

@@ -8,8 +8,8 @@
   <% path = like_path(post) %>
 <% end %>
 
-<%= link_to path, :class => "btn btn-#{btn_class} comment-button",
-    :method => method do %>
+<%= link_to path, :id => post.id, :class => "btn btn-#{btn_class} btn-md comment-button",
+    :method => method, :remote => true do %>
     <span class='glyphicon glyphicon-thumbs-up' aria-hidden='true'></span>
-    <span><%= post.likers %></span>
+    <span class='post-likers'><%= post.likers %></span>
   <% end %>
