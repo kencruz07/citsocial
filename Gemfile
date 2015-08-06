@@ -29,8 +29,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml', '~> 4.0.6'
 
-gem 'sweet-alert'
-
 # Use Unicorn as the app server
 # gem 'unicorn'
 
