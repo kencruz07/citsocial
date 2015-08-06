@@ -28,7 +28,8 @@
   border-radius: 0;
 }
 #post-index .post-panel, #user-show .post-panel{
-  margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: -1px;
 }
 #post-show .post-panel{
   margin-bottom: -1px;
@@ -59,10 +60,6 @@
 .comment-delete-button{
   border: none;
   opacity: .8;
-}
-#post-index div.comment-form-list, #user-show div.comment-form-list{
-  display: none;
-  margin-bottom: 15px;
 }
 .comment-show-link{
   font-size: 1.1rem;

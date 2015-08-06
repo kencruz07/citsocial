@@ -1,23 +1,22 @@
 function display_comments(id){
-  $('#'+id+'.comment-form-list').show();
-  $('#'+id+'.post-panel').css('margin-bottom', '-1px');
+  $('.comment-form-list[data-post-id='+id+']').removeClass('hidden');
+  $('.post-panel[data-post-id='+id+']').css('margin-bottom', '-1px');
 }
 
 function hide_comments(id){
-  $('#'+id+'.comment-form-list').hide();
-  $('#'+id+'.post-panel').css('margin-bottom', '15px');
+  $('.comment-form-list[data-post-id='+id+']').addClass('hidden');
+  $('.post-panel[data-post-id='+id+']').css('margin-bottom', '15px');
 }
 
-var ready;
-ready = function() {
+var ready = function() {
 
   $('body').on('click', '.comment-show-link', function(e){
     e.preventDefault();
-    display_comments($(this).attr('id'));
+    display_comments($(this).data('post-id'));
   });
   $('body').on('click', '.comment-hide-link', function(e){
     e.preventDefault();
-    hide_comments($(this).attr('id'));
+    hide_comments($(this).data('post-id'));
   });
 
 };
