@@ -1,23 +1,15 @@
 <div class='row'>
   <div class='col-xs-6 col-xs-offset-3'>
     <h1>
-      <%= link_to current_user.name, current_user, :class => "post-links" %>
+      <%= link_to current_user.name, current_user, :class => 'post-links' %>
     </h1>
   </div>
 </div>
 
-<div class='row'>
-  <div class='col-xs-6 col-xs-offset-3'>
-    <%= link_to 'Create Post', new_post_path,  :class => 'btn btn-success btn-block' %>
-  </div>
-</div>
+<%= form_for @post, :remote => true do |f| %>
+  <%= render :partial => 'posts/form', :locals => { :f => f } %>
+<% end %>
 
-<div class='row'>
-  <div class='col-xs-6 col-xs-offset-3'>
-    <h3>
-      Timeline:
-    </h3>
-  </div>
+<div id='post-index'>
+  <%= render @posts.latest %>
 </div>
-
-<%= render @posts.latest %>

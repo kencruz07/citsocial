@@ -4,11 +4,11 @@ class PostsController < ApplicationController
       redirect_to root_url
     end
     @posts = current_user.timeline
+    @post = current_user.posts.build
   end
 
   def show
     @post = Post.find params[:id]
-    @comment = @post.comments.new
   end
 
   def new
@@ -17,11 +17,17 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build post_params
-    if @post.save
-      redirect_to @post
-    else
-      flash[:alert] = @post.errors.full_messages
-      render 'new'
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to posts_path }
+        format.js {}
+        format.json { render :json => @post, :status => :created,
+          :location => @post}
+      else
+        format.html { render 'new' }
+        format.json { render :json => @post.errors,
+          :status => :unprocessable_entity}
+      end
     end
   end
 
@@ -44,7 +50,8 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
     user = @post.user
     @post.destroy
-    redirect_to user
+
+    redirect_to :back
   end
 
   def post_params

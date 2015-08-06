@@ -1,24 +1,20 @@
 <div class='row'>
-  <div class='col-xs-6 col-xs-offset-3'><h1><%= "#{title}" %> post: </h1></div>
+  <div class='col-xs-6 col-xs-offset-3'>
+    <%= f.text_field :title, :id => 'post-create-title',
+      :class => 'form-control input-lg', :placeholder => 'Title' %>
+  </div>
+</div>
+<div class='row'>
+  <div class='col-xs-6 col-xs-offset-3'>
+    <%= f.text_area :content, :id => 'post-create-content',
+      :class => 'form-control', :rows => '5', :placeholder => 'Content' %>
+  </div>
+</div>
+<br>
+<div class='row'>
+  <div class='col-xs-6 col-xs-offset-3'>
+   <%= f.submit 'Save', :id => 'post-create-submit', :class => 'btn btn-primary btn-block' %>
+  </div>
 </div>
 
-<%= form_for post do |f| %>
 
-  <div class='row'>
-    <div class='col-xs-6 col-xs-offset-3'>
-      <%= f.text_field :title, :class => 'form-control input-lg', :placeholder => 'Title' %>
-    </div>
-  </div>
-  <div class='row'>
-    <div class='col-xs-6 col-xs-offset-3'>
-      <%= f.text_area :content, :class => 'form-control', :rows => '5', :placeholder => 'Content' %>
-    </div>
-  </div>
-  <br>
-  <div class='row'>
-    <div class='col-xs-3 col-xs-offset-3'>
-     <%= f.submit 'Save', :class => 'btn btn-primary btn-block' %>
-    </div>
-  </div>
-
-<% end %>
