@@ -1,0 +1,20 @@
+!!! 5
+
+%html
+  %head
+    %title Citsocial
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body.body-padding
+
+    = render 'shared/header'
+
+    - error_message = [flash[:alert]].flatten.compact
+    - if error_message.present?
+      .alert.alert-danger{ :role => 'alert' }
+        %ul
+          - error_message.each do |indiv_msg|
+            = content_tag :li, indiv_msg
+
+  = yield
