@@ -29,6 +29,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml', '~> 4.0.6'
 
+gem 'paperclip', '~> 4.3'
+
+gem 'remotipart', '~> 1.2'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

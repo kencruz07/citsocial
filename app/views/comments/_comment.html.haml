@@ -7,6 +7,7 @@
           .col-xs-9.col-xs-offset-1
             %p= link_to comment.user.name, comment.user
             %p= comment.content
+            = image_tag comment.attachment.url :large if comment.attachment.present?
             %p.comments-time
               = "#{distance_of_time_in_words comment.created_at, Time.now} ago"
           .col-xs-2
