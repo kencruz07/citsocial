@@ -1,0 +1,10 @@
+- btn_class = 'default'
+- if current_user.like?(post)
+  - btn_class = 'primary'
+
+= link_to post_likes_path(post), :id => post.id,
+  :class => "btn btn-#{btn_class} btn-md comment-button",
+  :method => :post, :remote => true do
+  %span.glyphicon.glyphicon-thumbs-up{ :aria => { :hidden => 'true' }}
+  %span.post-likers
+    = post.likers

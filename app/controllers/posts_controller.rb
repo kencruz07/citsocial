@@ -2,9 +2,11 @@ class PostsController < ApplicationController
   def index
     if session[:user_id].blank?
       redirect_to root_url
+    else
+       @posts = current_user.timeline
+       @post = current_user.posts.build
     end
-    @posts = current_user.timeline
-    @post = current_user.posts.build
+
   end
 
   def show

@@ -1,8 +1,9 @@
 $('<%= escape_javascript(render @comment) %>').
   prependTo('.comment-index[data-post-id=<%= @comment.post.id %>]');
 $('#comment-create-content').val('');
-$('.comment-show-link[data-post-id=<%= @comment.post.id %>]').text('<%= @comment.post.commenters.upcase %>');
+$('.comment-show-link[data-post-id=<%= @comment.post.id %>]').
+  text('<%= @comment.post.commenters.upcase %>');
 
 if(<%= @post.comments.count %> != 0){
-  $('#<%= @comment.post.id %>.post-comment').show();
+  $('.comment-hide-container[data-post-id=<%= @comment.post.id %>]').removeClass('hidden');
 }

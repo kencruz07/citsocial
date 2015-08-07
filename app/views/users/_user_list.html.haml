@@ -1,0 +1,13 @@
+
+.row
+  .col-xs-6.col-xs-offset-3
+    %h1= title
+
+.row
+  .col-xs-6.col-xs-offset-3
+    %table.table
+      %tr
+        %th Name
+        %th
+        - users.alphabetical.each do |user|
+          = render :partial => 'users/user', :locals => { :user => user }

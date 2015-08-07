@@ -1,0 +1,13 @@
+= form_for [post, post.comments.build], :remote => true do |f|
+  .row
+    .col-xs-6.col-xs-offset-3
+      .panel.panel-default.post-comment-box
+        .panel-body
+          .row
+            .col-xs-9
+              = f.text_area :content, :id => 'comment-create-content',
+                :rows => '1', :class => 'form-control input-sm',
+                :placeholder => 'Comment'
+            .col-xs-3
+              = f.submit 'Post', :class => 'btn btn-sm btn-primary btn-block post-comment',
+                :placeholder => 'Comment'
