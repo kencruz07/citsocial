@@ -22,6 +22,7 @@
           = link_to post.title, post, :class => 'post-links'
         %p.post-content
           = post.content
+        = image_tag post.attachment.url :large if post.attachment.present?
       .panel-footer.post-panel-footer
         .like-unlike-container{ :data => { :post_id => "#{post.id}" }}
           = render :partial => 'likes/like_button', :locals => { :post => post }

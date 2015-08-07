@@ -8,5 +8,9 @@
       :class => 'form-control', :rows => '5', :placeholder => 'Content'
 %br
 .row
-  .col-xs-6.col-xs-offset-3
+  .col-xs-4.col-xs-offset-3
     = f.submit 'Save', :id => 'post-create-submit', :class => 'btn btn-primary btn-block'
+  .col-xs-2.comment-button
+    %span.btn.btn-success.btn-block.post-comment.btn-file
+      %span.glyphicon.glyphicon-paperclip Upload
+      = f.file_field :attachment

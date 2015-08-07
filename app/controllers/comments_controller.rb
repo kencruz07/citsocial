@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
         format.json { render :json => @comment, :status => :created,
           :location => @comment.post }
       else
+        raise @comment.errors.inspect
         format.html { redirect_to @post }
         format.json { render :json => @comment.errors,
           :status => :unprocessable_entity}
@@ -26,6 +27,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit :content
+    params.require(:comment).permit :content, :attachment
   end
 end
