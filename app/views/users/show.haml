@@ -8,4 +8,7 @@
     %h5= link_to "Followers: #{@user.followers.count}", user_followers_path(@user), :class => 'user-links'
 
 #user-show
-  = render @user.posts.latest
+  = render @posts
+  .row
+    .col-xs-6.col-xs-offset-3
+      = paginate @posts, :theme => 'twitter-bootstrap-3'

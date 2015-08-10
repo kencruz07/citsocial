@@ -7,3 +7,6 @@
 
 #post-index
   = render @posts.latest
+  .row
+    .col-xs-6.col-xs-offset-3
+      = paginate @posts, :theme => 'twitter-bootstrap-3'

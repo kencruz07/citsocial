@@ -34,6 +34,10 @@ gem 'paperclip', '~> 4.3'
 
 gem 'remotipart', '~> 1.2'
 
+gem 'kaminari'
+
+gem 'bootstrap-kaminari-views'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
