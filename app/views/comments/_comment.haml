@@ -1,0 +1,18 @@
+.row
+  .col-xs-6.col-xs-offset-3
+    .panel.panel-default.post-comment
+      .panel-body
+        .row
+          .col-xs-9.col-xs-offset-1
+            %p= link_to comment.user.name, comment.user
+            %p= comment.content
+            = image_tag comment.attachment.image.url :large if comment.attachment.present?
+            %p.comments-time
+              = "#{distance_of_time_in_words comment.created_at, Time.now} ago"
+          .col-xs-2
+            - if current_user == comment.user
+              = link_to comment,
+                :class => 'btn btn-default btn-md comment-delete-button pull-right',
+                :method => :delete,
+                :data => { :confirm => 'Are you sure you want to delete?'} do
+                %span.glyphicon.glyphicon-remove{ :aria => { :hidden => 'true'}}

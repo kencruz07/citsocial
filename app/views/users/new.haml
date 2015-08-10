@@ -1,0 +1,34 @@
+.row
+  .col-xs-12
+    %h1.text-center citsocial - Sign Up
+
+= form_for @user do |f|
+  .row
+    .col-xs-1.col-xs-offset-3
+      = f.label :first_name
+    .col-xs-5
+      = f.text_field :first_name, :class => 'form-control input-lg text-center'
+  .row
+    .col-xs-1.col-xs-offset-3
+      = f.label :last_name
+    .col-xs-5
+      = f.text_field :last_name, :class => 'form-control input-lg text-center'
+  .row
+    .col-xs-1.col-xs-offset-3
+      = f.label :email
+    .col-xs-5
+      = f.text_field :email, :class => 'form-control input-lg text-center'
+  .row
+    .col-xs-1.col-xs-offset-3
+      = f.label :password
+    .col-xs-5
+      = f.password_field :password, :class => 'form-control input-lg text-center'
+  .row
+    .col-xs-1.col-xs-offset-3
+      = f.label :password_confirmation
+    .col-xs-5
+      = f.password_field :password_confirmation, :class => 'form-control input-lg text-center'
+  .row
+    .col-xs-6.col-xs-offset-3
+      = f.submit 'Sign Up', :id => 'sign_up_button', :class => 'btn btn-primary btn-block'
+
