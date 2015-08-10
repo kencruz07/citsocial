@@ -1,0 +1,18 @@
+.row
+  .col-xs-6.col-xs-offset-3
+    = f.text_field :title, :id => 'post-create-title',
+      :class => 'form-control input-lg', :placeholder => 'Title'
+.row
+  .col-xs-6.col-xs-offset-3
+    = f.text_area :content, :id => 'post-create-content',
+      :class => 'form-control', :rows => '5', :placeholder => 'Content'
+%br
+.row
+  .col-xs-1.col-xs-offset-3.comment-button
+    = f.fields_for(:attachment_attributes, post.build_attachment) do |image|
+      %span.btn.btn-success.btn-block.post-comment.btn-file
+        %span.glyphicon.glyphicon-paperclip Upload
+        = image.file_field :image
+  .col-xs-5
+    = f.submit 'Save', :id => 'post-create-submit', :class => 'btn btn-primary btn-block'
+

@@ -1,14 +1,10 @@
 class Post < ActiveRecord::Base
-  has_attached_file :attachment,
-    :styles => { :small => '64x64', :med => '100x100', :large => '200x200' }
-  validates_attachment :attachment,
-    :content_type => { :content_type => ['image/jpeg', 'image/gif', 'image/png'] }
-
   validates_presence_of :title
 
   belongs_to :user
   has_many :comments, :dependent => :destroy
-  has_many :attachments, :as => :image
+  has_one :attachment, :as => :attachable, :dependent => :destroy
+  accepts_nested_attributes_for :attachment
 
   has_and_belongs_to_many :likes, :class_name => 'User',
                                    :foreign_key => 'post_id',

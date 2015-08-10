@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+#ruby=jruby-2.2.1
+#ruby-gemset=citsocial_rails42
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
@@ -50,3 +51,6 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'thin'
+end
