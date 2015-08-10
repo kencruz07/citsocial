@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+#ruby=jruby-2.2.1
+#ruby-gemset=citsocial_rails42
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
@@ -29,6 +30,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml', '~> 4.0.6'
 
+gem 'paperclip', '~> 4.3'
+
+gem 'remotipart', '~> 1.2'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -46,3 +51,6 @@ group :development, :test do
   gem 'spring'
 end
 
+group :development do
+  gem 'thin'
+end

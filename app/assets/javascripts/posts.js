@@ -9,11 +9,11 @@ function hide_comments(id){
 }
 
 var ready = function() {
-
   $('body').on('click', '.comment-show-link', function(e){
     e.preventDefault();
     display_comments($(this).data('post-id'));
   });
+
   $('body').on('click', '.comment-hide-link', function(e){
     e.preventDefault();
     hide_comments($(this).data('post-id'));

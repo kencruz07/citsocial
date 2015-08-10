@@ -6,11 +6,13 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        # raise @comment.save
         format.html { redirect_to @comment.post }
-        format.js {}
+        format.js { render :layout => false }
         format.json { render :json => @comment, :status => :created,
           :location => @comment.post }
       else
+
         format.html { redirect_to @post }
         format.json { render :json => @comment.errors,
           :status => :unprocessable_entity}
@@ -21,11 +23,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find params[:id]
     @comment.destroy
-    # redirect_to @comment.post
     redirect_to :back
   end
 
   def comment_params
-    params.require(:comment).permit :content
+    params.require(:comment).permit :content, :attachment_attributes => [:image]
   end
 end

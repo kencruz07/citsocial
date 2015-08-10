@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def index
     if session[:user_id].blank?
       redirect_to root_url
@@ -22,7 +23,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to posts_path }
-        format.js {}
+        format.js { render :layout => false }
         format.json { render :json => @post, :status => :created,
           :location => @post}
       else
@@ -57,7 +58,8 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit :title, :content
+    params.require(:post).permit :title, :content, :attachment_attributes => [:image]
   end
+
 end
 
