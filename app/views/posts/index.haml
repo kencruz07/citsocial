@@ -1,7 +1,6 @@
 .row
   .col-xs-6.col-xs-offset-3
-    %h1
-      = link_to current_user.name, current_user, :class => 'post-links'
+    %h1= link_to current_user.name, current_user, :class => 'post-links'
 
 = form_for @post, :html => { :multipart => true }, :remote => true do |f|
   = render :partial => 'posts/form', :locals => { :post => @post, :f => f }
