@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     if session[:user_id].blank?
       redirect_to root_url
     else
-       @posts = current_user.timeline
+       @posts = current_user.timeline.latest.page params[:page]
        @post = current_user.posts.build
     end
 
