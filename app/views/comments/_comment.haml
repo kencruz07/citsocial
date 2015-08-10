@@ -8,7 +8,7 @@
             %p= comment.content
             = image_tag comment.attachment.image.url :large if comment.attachment.present?
             %p.comments-time
-              = "#{distance_of_time_in_words comment.created_at, Time.now} ago"
+              #{distance_of_time_in_words comment.created_at, Time.now} ago
           .col-xs-2
             - if current_user == comment.user
               = link_to comment,
