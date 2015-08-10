@@ -2,5 +2,5 @@
   .col-xs-6.col-xs-offset-3
     %h1 Edit post
 
-= form_for @post do |f|
+= form_for @post, :html => { :multipart => true } do |f|
   = render :partial => 'posts/form', :locals => { :f => f }
