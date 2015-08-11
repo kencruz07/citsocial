@@ -14,6 +14,5 @@
 /public/system/*
 /config/database.yml
 /config/secrets.yml
-/vendor/.ruby-gemset
-/vendor/.ruby-version
-
+.ruby-gemset
+.ruby-version
