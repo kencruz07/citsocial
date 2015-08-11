@@ -39,7 +39,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -57,6 +57,9 @@ end
 
 group :development do
   gem 'thin'
-
+  # gem 'unicorn'
   gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
 end
