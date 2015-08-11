@@ -48,7 +48,7 @@
   margin-bottom: 0;
   border-top: none;
 }
-#comment-create-content{
+.comment-create-content{
   margin-bottom: 0;
   border-radius: 0;
   resize: none;
@@ -91,4 +91,7 @@
   background: white;
   cursor: inherit;
   display: block;
+}
+.post-delete a:hover{
+  cursor: pointer;
 }

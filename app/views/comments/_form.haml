@@ -6,8 +6,8 @@
         .panel-body
           .row
             .col-xs-8
-              = f.text_area :content, :id => 'comment-create-content',
-                :rows => '1', :class => 'form-control input-sm',
+              = f.text_area :content,
+                :rows => '1', :class => 'comment-create-content form-control input-sm',
                 :placeholder => 'Comment'
             .col-xs-2.comment-button
               = f.fields_for(:attachment_attributes, comment.build.build_attachment) do |image|

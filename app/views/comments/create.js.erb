@@ -1,6 +1,6 @@
 $('<%= escape_javascript(render @comment) %>').
   prependTo('.comment-index[data-post-id=<%= @comment.post.id %>]');
-$('#comment-create-content').val('');
+$('.comment-create-content').val('');
 $('.comment-show-link[data-post-id=<%= @comment.post.id %>]').
   text('<%= @comment.post.commenters.upcase %>');
 

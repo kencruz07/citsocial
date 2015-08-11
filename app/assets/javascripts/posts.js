@@ -19,6 +19,46 @@ var ready = function() {
     hide_comments($(this).data('post-id'));
   });
 
+  $('body').on('click', '.post-delete', function(){
+    var delete_confirmation = confirm("Are you sure you want to delete?");
+    if(delete_confirmation == true){
+      var post_id = $(this).parents('.post-entry').data('post-id');
+      $.ajax({
+        url: "/posts/" + post_id,
+        type: "post",
+        dataType: "json",
+        data: {"_method":"delete"}
+      });
+      $('.post-entry[data-post-id='+post_id+']').hide();
+      $('.comment-form-list[data-post-id='+post_id+']').hide();
+    }
+  });
+
+  $('body').on('click', '.comment-delete', function(){
+    var delete_confirmation = confirm("Are you sure you want to delete?");
+    if(delete_confirmation == true){
+      var post_id = $(this).parents('.comment-index').data('post-id');
+      var comment_id = $(this).parents('.comment-entry').data('comment-id');
+      $.ajax({
+        url: "/comments/" + comment_id,
+        type: "post",
+        dataType: "json",
+        data: {"_method":"delete"}
+      });
+
+      $('.comment-entry[data-comment-id='+comment_id+']').remove();
+      // var no_comments = $(this).parents('.comment-index').children('.comment-entry').length;
+
+      // var comment_string = ' COMMENTS'
+      // alert(no_comments);
+      // if(no_comments == 0){
+      //   comment_string = ' COMMENT'
+      //   $('.comment-hide-container[data-post-id='+post_id+']').addClass('hidden');
+      // }
+      // $('.comment-show-link[data-post-id='+post_id+']').val(no_comments+comment_string);
+    }
+  });
+
 };
 
 $(document).ready(ready);
