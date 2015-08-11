@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'citsocial'
-set :deploy_user, 'deployuser'
+# set :deploy_user, 'deployuser'
 
 set :repo_url, 'git@github.com:kencruz07/citsocial.git'
 set :branch, 'master'
@@ -15,7 +15,8 @@ set :deploy_to, '/var/www/citsocial'
 
 set :user, 'deployuser'
 
-set :rvm_ruby_version, 'ruby-2.2.1'
+# set :rvm_type, :system
+# set :rvm_ruby_version, 'ruby-2.2.1'
 
 # Default value for :scm is :git
 # set :scm, :git
