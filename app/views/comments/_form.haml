@@ -7,12 +7,15 @@
           .row
             .col-xs-8
               = f.text_area :content,
-                :rows => '1', :class => 'comment-create-content form-control input-sm',
+                :rows => '1',
+                :class => 'comment-create-content form-control input-sm',
                 :placeholder => 'Comment'
             .col-xs-2.comment-button
-              = f.fields_for(:attachment_attributes, comment.build.build_attachment) do |image|
+              = f.fields_for(:attachment_attributes,
+                comment.build.build_attachment) do |image|
                 %span.btn.btn-sm.btn-success.btn-block.post-comment.btn-file
                   %span.glyphicon.glyphicon-paperclip Upload
                   = image.file_field :image
             .col-xs-2.comment-button
-              = f.submit 'Post', :class => 'btn btn-sm btn-primary btn-block post-comment'
+              = f.submit 'Post',
+                :class => 'btn btn-sm btn-primary btn-block post-comment'

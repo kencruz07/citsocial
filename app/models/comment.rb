@@ -11,6 +11,6 @@ class Comment < ActiveRecord::Base
   validates_presence_of :content
 
 
-  scope :latest, -> { order( :created_at => :desc ) }
+  scope :latest, -> { order(:created_at => :desc) }
 
 end

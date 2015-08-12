@@ -5,7 +5,8 @@
   .col-xs-6.col-xs-offset-3
     .panel.panel-default.js-post-panel.post-panel{:data => {:post_id => "#{post.id}"}}
       .panel-heading.post-panel-heading
-        = link_to "#{post.user.name}:", post.user, :class => 'post-user post-links'
+        = link_to "#{post.user.name}:", post.user,
+          :class => 'post-user post-links'
         - if current_user == post.user
           .btn-group.pull-right
             %button.btn.btn-primary.btn-xs.dropdown-toggle.post-dropdown-toggle{:type => 'button',
@@ -27,7 +28,8 @@
         .like-unlike-container{:data => {:post_id => "#{post.id}"}}
           = render :partial => 'likes/like_button', :locals => {:post => post}
         %span
-          = link_to post.commenters.upcase, '#', :class => 'js-comment-show-link comment-show-link',
+          = link_to post.commenters.upcase, '#',
+            :class => 'js-comment-show-link comment-show-link',
             :data => {:comments => post.comments.count, :post_id => post.id}
         %span.post-time.pull-right
           = "#{distance_of_time_in_words post.created_at, Time.now} ago".upcase
