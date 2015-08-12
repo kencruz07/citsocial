@@ -49,8 +49,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
-
   def self.authenticate email, password
     user = find_by_email email
     if user && user.password_hash ==
@@ -61,55 +59,37 @@ class User < ActiveRecord::Base
     end
   end
 
-
-
   def name
     "#{self.first_name} #{self.last_name}"
   end
-
-
 
   def follow other_user_id
     self.active_relationships.create :followed_id => other_user_id
   end
 
-
-
   def unfollow other_user_id
     self.active_relationships.find_by(:followed_id => other_user_id).destroy
   end
-
-
 
   def following? other_user
     self.following.include? other_user
   end
 
-
-
   def timeline
     Post.timeline following_ids, id
   end
-
-
 
   def like post
     self.likes << post
   end
 
-
-
   def unlike post
     self.likes.destroy post
   end
 
-
-
   def like? post
     self.likes.find_by(:id => post.id).present?
   end
-
-
 
   def toggle_like post
     if self.like? post

@@ -25,14 +25,10 @@ class Post < ActiveRecord::Base
       following_ids, id
   end
 
-
-
   def likers
     like_number = self.likes.count
     "#{like_number} #{'like'.pluralize like_number}"
   end
-
-
 
   def commenters
     comment_number = self.comments.count

@@ -7,20 +7,14 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-
-
   def new
-  	@user = User.new
+    @user = User.new
   end
-
-
 
   def show
     @user = User.find params[:id]
     @posts = @user.posts.latest.page params[:page]
   end
-
-
 
   def create
     @user = User.new user_params
@@ -33,10 +27,8 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   def user_params
-  	params.require(:user).
+    params.require(:user).
       permit :first_name, :last_name, :email, :password, :password_confirmation
   end
 

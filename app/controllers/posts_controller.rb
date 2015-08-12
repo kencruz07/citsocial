@@ -9,19 +9,13 @@ class PostsController < ApplicationController
     end
   end
 
-
-
   def show
     @post = Post.find params[:id]
   end
 
-
-
   def new
     @post = current_user.posts.build
   end
-
-
 
   def create
     @post = current_user.posts.build post_params
@@ -39,13 +33,9 @@ class PostsController < ApplicationController
     end
   end
 
-
-
   def edit
     @post = Post.find params[:id]
   end
-
-
 
   def update
     @post = Post.find params[:id]
@@ -58,15 +48,11 @@ class PostsController < ApplicationController
     end
   end
 
-
-
   def destroy
     @post = Post.find params[:id]
     @post.destroy
     redirect_to :back
   end
-
-
 
   def post_params
     params.require(:post).permit :title, :content, :attachment_attributes => [:image]

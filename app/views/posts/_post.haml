@@ -36,7 +36,7 @@
         %span.post-time.pull-right
           = "#{distance_of_time_in_words post.created_at, Time.now} ago".upcase
 
-.js-comment-form-list.comment-form-list{:class => "#{comment_form_list_class}",
+.js-comment-form-list.comment-form-list{:class => comment_form_list_class,
   :data => {:post_id => post.id}}
 
   .comment-form{:data => {:post_id => post.id}}
@@ -46,7 +46,7 @@
   .js-comment-index.comment-index{:data => {:post_id => post.id}}
     = render post.comments.latest
 
-  .row.js-comment-hide-container.comment-hide-container{:class => "#{comment_hide_class}",
+  .row.js-comment-hide-container.comment-hide-container{:class => comment_hide_class,
     :data => {:post_id => post.id}}
     .col-xs-6.col-xs-offset-3
       .panel.panel-default.post-comment{:data => {:post_id => post.id}}
