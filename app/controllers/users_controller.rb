@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     if session[:user_id].blank?
       redirect_to root_url
@@ -6,14 +7,20 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+
+
   def new
   	@user = User.new
   end
+
+
 
   def show
     @user = User.find params[:id]
     @posts = @user.posts.latest.page params[:page]
   end
+
+
 
   def create
     @user = User.new user_params
@@ -25,6 +32,8 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+
 
   def user_params
   	params.require(:user).

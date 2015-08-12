@@ -1,11 +1,12 @@
 class LikesController < ApplicationController
+
   def create
     @post = Post.find params[:post_id]
-    respond_to do |format|
 
+    respond_to do |format|
       if current_user.toggle_like @post
         format.html { redirect_to :back }
-        format.js { render :layout => false}
+        format.js { render :layout => false }
         format.json { render :json => @post, :status => :created,
           :location => :back }
       else
@@ -15,4 +16,5 @@ class LikesController < ApplicationController
       end
     end
   end
+
 end

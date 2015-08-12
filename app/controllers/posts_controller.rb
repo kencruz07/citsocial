@@ -7,16 +7,21 @@ class PostsController < ApplicationController
        @posts = current_user.timeline.latest.page params[:page]
        @post = current_user.posts.build
     end
-
   end
+
+
 
   def show
     @post = Post.find params[:id]
   end
 
+
+
   def new
     @post = current_user.posts.build
   end
+
+
 
   def create
     @post = current_user.posts.build post_params
@@ -25,18 +30,22 @@ class PostsController < ApplicationController
         format.html { redirect_to posts_path }
         format.js { render :layout => false }
         format.json { render :json => @post, :status => :created,
-          :location => @post}
+          :location => @post }
       else
         format.html { render 'new' }
         format.json { render :json => @post.errors,
-          :status => :unprocessable_entity}
+          :status => :unprocessable_entity }
       end
     end
   end
 
+
+
   def edit
     @post = Post.find params[:id]
   end
+
+
 
   def update
     @post = Post.find params[:id]
@@ -49,13 +58,16 @@ class PostsController < ApplicationController
     end
   end
 
+
+
   def destroy
     @post = Post.find params[:id]
     user = @post.user
     @post.destroy
-
     redirect_to :back
   end
+
+
 
   def post_params
     params.require(:post).permit :title, :content, :attachment_attributes => [:image]
