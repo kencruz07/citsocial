@@ -47,15 +47,18 @@ var ready = function() {
       });
 
       $('.comment-entry[data-comment-id='+comment_id+']').remove();
-      // var no_comments = $(this).parents('.comment-index').children('.comment-entry').length;
+      var no_comments =
+        $('.comment-index[data-post-id='+post_id+']').
+          children('.comment-entry').length;
 
-      // var comment_string = ' COMMENTS'
-      // alert(no_comments);
-      // if(no_comments == 0){
-      //   comment_string = ' COMMENT'
-      //   $('.comment-hide-container[data-post-id='+post_id+']').addClass('hidden');
-      // }
-      // $('.comment-show-link[data-post-id='+post_id+']').val(no_comments+comment_string);
+      var comment_string = ' COMMENTS'
+      if(no_comments == 0){
+        $('.comment-hide-container[data-post-id='+post_id+']').addClass('hidden');
+      }
+      else if(no_comments == 1){
+        comment_string = ' COMMENT';
+      }
+      $('.comment-show-link[data-post-id='+post_id+']').text(no_comments+comment_string);
     }
   });
 
