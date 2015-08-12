@@ -1,13 +1,13 @@
 var displayComments = function(id){
-  $('.js-comment-form-list[data-post-id='+id+']').removeClass('hidden');
-  $('.js-post-panel[data-post-id='+id+']').css('margin-bottom', '-1px');
+  $('.js-comment-form-list[data-post-id=' + id + ']').removeClass('hidden');
+  $('.js-post-panel[data-post-id=' + id + ']').css('margin-bottom', '-1px');
 }
 
 
 
 var hideComments = function (id){
-  $('.js-comment-form-list[data-post-id='+id+']').addClass('hidden');
-  $('.js-post-panel[data-post-id='+id+']').css('margin-bottom', '15px');
+  $('.js-comment-form-list[data-post-id=' + id + ']').addClass('hidden');
+  $('.js-post-panel[data-post-id=' + id + ']').css('margin-bottom', '15px');
 }
 
 
@@ -52,8 +52,8 @@ var ready = function() {
     var deleteConfirmation = confirm('Are you sure you want to delete?'),
         postID = null,
         commentID = null,
-        comment_string = null,
-        no_comments = 0;
+        commentString = null,
+        noComments = 0;
 
     if (deleteConfirmation){
       postID = $(this).parents('.js-comment-index').data('post-id');
@@ -68,21 +68,21 @@ var ready = function() {
 
       $('.js-comment-entry[data-comment-id=' + commentID + ']').remove();
 
-      no_comments =
+      noComments =
         $('.js-comment-index[data-post-id=' + postID + ']').
         children('.js-comment-entry').length;
 
-      comment_string = ' COMMENTS';
+      commentString = ' COMMENTS';
 
-      if ( no_comments == 0 ){
+      if ( noComments == 0 ){
         $('.js-comment-hide-container[data-post-id=' + postID + ']').
           addClass('hidden');
       }
-      else if ( no_comments == 1 ){
-        comment_string = ' COMMENT';
+      else if ( noComments == 1 ){
+        commentString = ' COMMENT';
       }
       $('.js-comment-show-link[data-post-id=' + postID + ']').
-        text(no_comments + comment_string);
+        text(noComments + commentString);
     }
   });
 };

@@ -5,7 +5,7 @@
 = form_for @post, :html => {:multipart => true}, :remote => true do |f|
   = render :partial => 'posts/form', :locals => {:post => @post, :f => f}
 
-#post-index
+#post-index.js-post-index
   = render @posts.latest
   .row
     .col-xs-6.col-xs-offset-3

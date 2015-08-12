@@ -1,11 +1,14 @@
 .row
   .col-xs-6.col-xs-offset-3
     = f.text_field :title, :id => 'post-create-title',
-      :class => 'form-control input-lg', :placeholder => 'Title'
+      :class => 'js-post-create-title form-control input-lg',
+      :placeholder => 'Title'
 .row
   .col-xs-6.col-xs-offset-3
     = f.text_area :content, :id => 'post-create-content',
-      :class => 'form-control', :rows => '5', :placeholder => 'Content'
+      :class => 'js-post-create-content form-control',
+      :rows => '5',
+      :placeholder => 'Content'
 %br
 .row
   .col-xs-1.col-xs-offset-3.comment-button

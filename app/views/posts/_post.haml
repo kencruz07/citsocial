@@ -3,9 +3,9 @@
 - comment_form_list_class = 'hidden' if post.comments.present?
 - comment_hide_class = 'hidden' if post.comments.count == 0
 
-.row.js-post-entry.post-entry{:data => {:post_id => "#{post.id}"}}
+.row.js-post-entry.post-entry{:data => {:post_id => post.id}}
   .col-xs-6.col-xs-offset-3
-    .panel.panel-default.js-post-panel.post-panel{:data => {:post_id => "#{post.id}"}}
+    .panel.panel-default.js-post-panel.post-panel{:data => {:post_id => post.id}}
       .panel-heading.post-panel-heading
         = link_to "#{post.user.name}:", post.user,
           :class => 'post-user post-links'
@@ -27,7 +27,7 @@
           = post.content
         = image_tag post.attachment.image.url :large if post.attachment.present?
       .panel-footer.post-panel-footer
-        .like-unlike-container{:data => {:post_id => "#{post.id}"}}
+        .js-like-unlike-container.like-unlike-container{:data => {:post_id => post.id}}
           = render :partial => 'likes/like_button', :locals => {:post => post}
         %span
           = link_to post.commenters.upcase, '#',
@@ -37,21 +37,21 @@
           = "#{distance_of_time_in_words post.created_at, Time.now} ago".upcase
 
 .js-comment-form-list.comment-form-list{:class => "#{comment_form_list_class}",
-  :data => {:post_id => "#{post.id}"}}
+  :data => {:post_id => post.id}}
 
-  .comment-form{:data => {:post_id => "#{post.id}"}}
+  .comment-form{:data => {:post_id => post.id}}
     = render :partial => 'comments/form',
     :locals => {:post => post, :comment => post.comments}
 
-  .js-comment-index.comment-index{:data => {:post_id => "#{post.id}"}}
+  .js-comment-index.comment-index{:data => {:post_id => post.id}}
     = render post.comments.latest
 
   .row.js-comment-hide-container.comment-hide-container{:class => "#{comment_hide_class}",
-    :data => {:post_id => "#{post.id}"}}
+    :data => {:post_id => post.id}}
     .col-xs-6.col-xs-offset-3
-      .panel.panel-default.post-comment{:data => {:post_id => "#{post.id}"}}
+      .panel.panel-default.post-comment{:data => {:post_id => post.id}}
         .panel-body
-          %p.comment-hide-link-container{:data => {:post_id => "#{post.id}"}}
+          %p.comment-hide-link-container{:data => {:post_id => post.id}}
             = link_to 'HIDE COMMENTS', '#',
               :class => 'js-comment-hide-link comment-hide-link',
               :data => {:post_id => post.id}

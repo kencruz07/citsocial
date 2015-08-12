@@ -24,11 +24,13 @@ class User < ActiveRecord::Base
 
 
   validates_confirmation_of :password
-  validates_confirmation_of :password_confirmation
+
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_presence_of :password, :on => :create
+  validates_presence_of :password_confirmation
   validates_presence_of :email
+
   validates_uniqueness_of :email
 
 
@@ -36,7 +38,7 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
 
-  scope :alphabetical, -> { order(:last_name => :asc) }
+  scope :alphabetical, -> { order :last_name => :asc }
 
 
 
