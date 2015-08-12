@@ -5,7 +5,7 @@ class LikesController < ApplicationController
 
       if current_user.toggle_like @post
         format.html { redirect_to :back }
-        format.js {}
+        format.js { render :layout => false}
         format.json { render :json => @post, :status => :created,
           :location => :back }
       else

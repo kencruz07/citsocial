@@ -5,6 +5,6 @@
 = link_to post_likes_path(post), :id => post.id,
   :class => "btn btn-#{btn_class} btn-md comment-button",
   :method => :post, :remote => true do
-  %span.glyphicon.glyphicon-thumbs-up{ :aria => { :hidden => 'true' }}
+  %span.glyphicon.glyphicon-thumbs-up{:aria => {:hidden => 'true'}}
   %span.post-likers
     = post.likers

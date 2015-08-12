@@ -1,4 +1,4 @@
-.row.comment-entry{ :data => { :comment_id => "#{comment.id}" } }
+.row.js-comment-entry.comment-entry{:data => {:comment_id => "#{comment.id}"}}
   .col-xs-6.col-xs-offset-3
     .panel.panel-default.post-comment
       .panel-body
@@ -11,10 +11,5 @@
               #{distance_of_time_in_words comment.created_at, Time.now} ago
           .col-xs-2
             - if current_user == comment.user
-              / = link_to comment,
-              /   :class => 'btn btn-default btn-md comment-delete-button pull-right',
-              /   :method => :delete,
-              /   :data => { :confirm => 'Are you sure you want to delete?'} do
-              /
               %a.comment-delete.btn.btn-default.btn-md.comment-delete-button.pull-right
-                %span.glyphicon.glyphicon-remove{ :aria => { :hidden => 'true'}}
+                %span.glyphicon.glyphicon-remove{:aria => {:hidden => 'true'}}
