@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  validates_presence_of :content
+
   belongs_to :user
   belongs_to :post
   has_one :attachment, :as => :attachable, :dependent => :destroy
