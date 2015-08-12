@@ -1,82 +1,119 @@
-.post-links{
+/* Post */
+
+.post-links {
   color: #333333;
   text-decoration: none;
 }
-.post-user{
+
+.post-user {
   font-size: 2rem;
 }
-.post-title{
+
+.post-title {
   font-size: 3rem;
 }
-.post-content{
+
+.post-content {
   font-size: 1.7rem;
   color: #888888
 }
-#post-index{
+
+#post-index {
   margin-top: 15px;
 }
-#post-create-title, #post-create-content, #post-create-submit{
+
+#post-create-title,
+#post-create-content,
+#post-create-submit {
   border-radius: 0;
 }
-#post-create-content{
+
+#post-create-content {
   margin-top: -1px;
   resize: none;
 }
-.post-panel, .post-panel-heading, .post-panel-footer,
-.post-comment-box, .post-comment,
-.comment-button{
+
+.post-panel,
+.post-panel-heading,
+.post-panel-footer,
+.post-comment-box,
+.post-comment,
+.comment-button {
   border-radius: 0;
 }
-#post-index .post-panel, #user-show .post-panel{
+
+#post-index .post-panel,
+#user-show .post-panel {
   margin-top: 15px;
   margin-bottom: -1px;
 }
-#post-show .post-panel{
+
+#post-show .post-panel {
   margin-bottom: -1px;
 }
-.post-panel-footer{
+
+.post-delete a:hover {
+  cursor: pointer;
+}
+
+.post-panel-footer {
   padding-bottom: 5px;
 }
-.post-time{
+
+.like-unlike-container {
+  margin-bottom: 5px;
+}
+
+.post-time {
   font-size: 1.1rem;
   color: #333333;
 }
-.post-comment-box{
+
+/* Post Comments */
+
+.post-comment-box {
   margin-bottom: 0;
 }
-.post-comment{
+
+.post-comment {
   margin-bottom: 0;
   border-top: none;
 }
-#comment-create-content{
+
+.comment-create-content {
   margin-bottom: 0;
   border-radius: 0;
   resize: none;
 }
-.comments-time{
+
+.comments-time {
   font-size: 1rem;
   color: #888888;
 }
-.comment-delete-button{
+
+.comment-delete-button {
   border: none;
   opacity: .8;
 }
-.comment-show-link{
+
+.comment-show-link {
   font-size: 1.1rem;
 }
-.comment-hide-link-container{
+
+.comment-hide-link-container {
   width: 100%;
   text-align: center;
   margin-bottom: 0;
   font-size: 1rem;
 }
-.like-unlike-container{
-  margin-bottom: 5px;
-}
-.btn-file{
+
+/* Upload Button */
+
+.btn-file {
   position: relative;
   overflow: hidden;
 }
+
 .btn-file input[type=file] {
   position: absolute;
   top: 0;

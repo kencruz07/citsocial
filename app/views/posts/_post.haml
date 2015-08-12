@@ -1,22 +1,25 @@
+/ TODO: Determine how to cut this shorter than 80 characters
+
 - comment_form_list_class = 'hidden' if post.comments.present?
 - comment_hide_class = 'hidden' if post.comments.count == 0
 
-.row
+.row.js-post-entry.post-entry{:data => {:post_id => post.id}}
   .col-xs-6.col-xs-offset-3
-    .panel.panel-default.post-panel{ :data => { :post_id => "#{post.id}" } }
+    .panel.panel-default.js-post-panel.post-panel{:data => {:post_id => post.id}}
       .panel-heading.post-panel-heading
-        = link_to "#{post.user.name}:", post.user, :class => 'post-user post-links'
+        = link_to "#{post.user.name}:", post.user,
+          :class => 'post-user post-links'
         - if current_user == post.user
           .btn-group.pull-right
-            %button.btn.btn-primary.btn-xs.dropdown-toggle.post-dropdown-toggle{ :type => 'button',
-              :data => { :toggle => 'dropdown' },
-              :aria => { :haspopup => 'true', :expanded => 'false' }}
+            %button.btn.btn-primary.btn-xs.dropdown-toggle.post-dropdown-toggle{:type => 'button',
+              :data => {:toggle => 'dropdown'},
+              :aria => {:haspopup => 'true', :expanded => 'false'}}
               %span.caret
             %ul.dropdown-menu
               %li= link_to 'Edit', edit_post_path(post)
-              %li.divider{ :role => 'separator' }
-              %li= link_to 'Delete', post, :method => :delete,
-                :data => { :confirm =>'Are you sure you want to delete?'}
+              %li.divider{:role => 'separator'}
+              %li.js-post-delete.post-delete
+                %a Delete
       .panel-body
         %p.post-title
           = link_to post.title, post, :class => 'post-links'
@@ -24,33 +27,34 @@
           = post.content
         = image_tag post.attachment.image.url :large if post.attachment.present?
       .panel-footer.post-panel-footer
-        .like-unlike-container{ :data => { :post_id => "#{post.id}" }}
-          = render :partial => 'likes/like_button', :locals => { :post => post }
+        .js-like-unlike-container.like-unlike-container{:data => {:post_id => post.id}}
+          = render :partial => 'likes/like_button', :locals => {:post => post}
         %span
-          = link_to post.commenters.upcase, '#', :class => 'comment-show-link',
-            :data => { :comments => post.comments.count, :post_id => post.id }
+          = link_to post.commenters.upcase, '#',
+            :class => 'js-comment-show-link comment-show-link',
+            :data => {:comments => post.comments.count, :post_id => post.id}
         %span.post-time.pull-right
           = "#{distance_of_time_in_words post.created_at, Time.now} ago".upcase
 
-.comment-form-list{ :class => "#{comment_form_list_class}",
-  :data => { :post_id => "#{post.id}" }}
+.js-comment-form-list.comment-form-list{:class => comment_form_list_class,
+  :data => {:post_id => post.id}}
 
-  .comment-form{ :data => { :post_id => "#{post.id}" }}
+  .comment-form{:data => {:post_id => post.id}}
     = render :partial => 'comments/form',
-    :locals => { :post => post, :comment => post.comments }
+    :locals => {:post => post, :comment => post.comments}
 
-  .comment-index{ :data => { :post_id => "#{post.id}" }}
+  .js-comment-index.comment-index{:data => {:post_id => post.id}}
     = render post.comments.latest
 
-  .row.comment-hide-container{ :class => "#{comment_hide_class}",
-    :data => {:post_id => "#{post.id}" }}
+  .row.js-comment-hide-container.comment-hide-container{:class => comment_hide_class,
+    :data => {:post_id => post.id}}
     .col-xs-6.col-xs-offset-3
-      .panel.panel-default.post-comment{ :data => {:post_id => "#{post.id}" }}
+      .panel.panel-default.post-comment{:data => {:post_id => post.id}}
         .panel-body
-          %p.comment-hide-link-container{ :data => {:post_id => "#{post.id}" }}
+          %p.comment-hide-link-container{:data => {:post_id => post.id}}
             = link_to 'HIDE COMMENTS', '#',
-              :class => 'comment-hide-link',
-              :data => { :post_id => post.id }
+              :class => 'js-comment-hide-link comment-hide-link',
+              :data => {:post_id => post.id}
 
 
 

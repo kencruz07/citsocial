@@ -1,16 +1,22 @@
 class Post < ActiveRecord::Base
-  validates_presence_of :title
 
   belongs_to :user
-  has_many :comments, :dependent => :destroy
+
   has_one :attachment, :as => :attachable, :dependent => :destroy
-  accepts_nested_attributes_for :attachment
+
+  has_many :comments, :dependent => :destroy
 
   has_and_belongs_to_many :likes, :class_name => 'User',
                                    :foreign_key => 'post_id',
                                    :dependent =>  :destroy
 
-  scope :latest, -> { order( :created_at => :desc ) }
+  accepts_nested_attributes_for :attachment
+
+
+  validates_presence_of :title
+
+
+  scope :latest, -> { order :created_at => :desc }
 
 
 

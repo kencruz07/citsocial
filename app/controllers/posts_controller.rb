@@ -7,7 +7,6 @@ class PostsController < ApplicationController
        @posts = current_user.timeline.latest.page params[:page]
        @post = current_user.posts.build
     end
-
   end
 
   def show
@@ -25,11 +24,11 @@ class PostsController < ApplicationController
         format.html { redirect_to posts_path }
         format.js { render :layout => false }
         format.json { render :json => @post, :status => :created,
-          :location => @post}
+          :location => @post }
       else
         format.html { render 'new' }
         format.json { render :json => @post.errors,
-          :status => :unprocessable_entity}
+          :status => :unprocessable_entity }
       end
     end
   end
@@ -51,9 +50,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find params[:id]
-    user = @post.user
     @post.destroy
-
     redirect_to :back
   end
 

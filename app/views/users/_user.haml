@@ -1,11 +1,8 @@
-
+- partial = 'users/follow'
 %tr
-  %th= link_to user.name, user_path(user), :class => 'user-links'
+  %th= link_to user.name, user, :class => 'user-links'
   %th
     - unless current_user == user
       #follow_form
-      - if current_user.following? user
-        = render :partial => 'users/unfollow', :locals => { :user => user }
-      - else
-        = render :partial => 'users/follow', :locals => { :user => user }
-
+        - partial = 'users/unfollow' if current_user.following? user
+        = render :partial => partial, :locals => {:user => user}
