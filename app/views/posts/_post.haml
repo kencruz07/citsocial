@@ -7,7 +7,7 @@
   .col-xs-6.col-xs-offset-3
     .panel.panel-default.js-post-panel.post-panel{:data => {:post_id => post.id}}
       .panel-heading.post-panel-heading
-        = link_to "#{post.user.name}:", post.user,
+        = link_to "#{post.user}:", post.user,
           :class => 'post-user post-links'
         - if current_user == post.user
           .btn-group.pull-right
@@ -44,7 +44,7 @@
     :locals => {:post => post, :comment => post.comments}
 
   .js-comment-index.comment-index{:data => {:post_id => post.id}}
-    = render post.comments.latest
+    = render post.comments.latest.decorate
 
   .row.js-comment-hide-container.comment-hide-container{:class => comment_hide_class,
     :data => {:post_id => post.id}}

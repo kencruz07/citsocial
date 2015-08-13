@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id            :integer          not null, primary key
+#  first_name    :string
+#  last_name     :string
+#  email         :string
+#  password_hash :string
+#  password_salt :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 require 'bcrypt'
 
 class User < ActiveRecord::Base
@@ -37,7 +51,6 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
 
-
   scope :alphabetical, -> { order :last_name => :asc }
 
 
@@ -57,10 +70,6 @@ class User < ActiveRecord::Base
     else
       nil
     end
-  end
-
-  def name
-    "#{self.first_name} #{self.last_name}"
   end
 
   def follow other_user_id

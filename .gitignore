@@ -13,6 +13,6 @@
 /tmp
 /public/system/*
 /config/database.yml
-
+/config/secrets.yml
 .ruby-gemset
 .ruby-version

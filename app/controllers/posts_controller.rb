@@ -4,13 +4,13 @@ class PostsController < ApplicationController
     if session[:user_id].blank?
       redirect_to root_url
     else
-       @posts = current_user.timeline.latest.page params[:page]
-       @post = current_user.posts.build
+      @posts = current_user.timeline.latest.page(params[:page]).decorate
+      @post = current_user.posts.build
     end
   end
 
   def show
-    @post = Post.find params[:id]
+    @post = PostDecorator.find params[:id]
   end
 
   def new
@@ -39,7 +39,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find params[:id]
-
     if @post.update_attributes(post_params)
       redirect_to @post
     else

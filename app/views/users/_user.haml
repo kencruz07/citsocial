@@ -1,6 +1,6 @@
 - partial = 'users/follow'
 %tr
-  %th= link_to user.name, user, :class => 'user-links'
+  %th= link_to user, user, :class => 'user-links'
   %th
     - unless current_user == user
       #follow_form

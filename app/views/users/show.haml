@@ -1,6 +1,6 @@
 .row
   .col-xs-6.col-xs-offset-3
-    %h1 Posts by #{@user.name}:
+    %h1 Posts by #{@user}:
 .row
   .col-xs-1.col-xs-offset-3
     %h5= link_to "Following: #{@user.following.count}",
@@ -10,7 +10,7 @@
       user_followers_path(@user), :class => 'user-links'
 
 #user-show
-  = render @posts
+  = render @posts.decorate
   .row
     .col-xs-6.col-xs-offset-3
       = paginate @posts, :theme => 'twitter-bootstrap-3'

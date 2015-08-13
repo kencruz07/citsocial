@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  content    :text
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  title      :string           not null
+#
+
 class Post < ActiveRecord::Base
 
   belongs_to :user
@@ -23,16 +35,6 @@ class Post < ActiveRecord::Base
   def self.timeline following_ids, id
     Post.where 'user_id IN (?) OR user_id = ?',
       following_ids, id
-  end
-
-  def likers
-    like_number = self.likes.count
-    "#{like_number} #{'like'.pluralize like_number}"
-  end
-
-  def commenters
-    comment_number = self.comments.count
-    "#{comment_number} #{'comment'.pluralize comment_number}"
   end
 
 end

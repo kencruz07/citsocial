@@ -1,2 +1,2 @@
-$('<%= escape_javascript(render @post) %>').prependTo('.js-post-index');
+$('<%= escape_javascript(render @post.decorate) %>').prependTo('.js-post-index');
 $('.js-post-create-title, .js-post-create-content').val('');

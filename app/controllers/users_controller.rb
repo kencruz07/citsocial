@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if session[:user_id].blank?
       redirect_to root_url
     end
-    @users = User.all
+    @users = User.all.alphabetical.decorate
   end
 
   def new
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find params[:id]
+    @user = UserDecorator.find params[:id]
     @posts = @user.posts.latest.page params[:page]
   end
 

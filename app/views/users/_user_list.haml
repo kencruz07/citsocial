@@ -9,5 +9,5 @@
       %tr
         %th Name
         %th
-        - users.alphabetical.each do |user|
+        - users.each do |user|
           = render :partial => 'users/user', :locals => {:user => user}

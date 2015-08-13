@@ -39,6 +39,11 @@ gem 'bootstrap-kaminari-views'
 # Use Unicorn as the app server
 gem 'unicorn'
 
+gem 'annotate', '~> 2.6.6'
+
+gem 'seedbank'
+
+gem 'draper', '~> 1.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

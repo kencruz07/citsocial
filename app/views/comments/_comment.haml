@@ -6,7 +6,7 @@
       .panel-body
         .row
           .col-xs-9.col-xs-offset-1
-            %p= link_to comment.user.name, comment.user
+            %p= link_to comment.user, comment.user
             %p= comment.content
             = image_tag comment.attachment.image.url :large if comment.attachment.present?
             %p.comments-time

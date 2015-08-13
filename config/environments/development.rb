@@ -36,6 +36,7 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
+  config.action_mailer.delivery_method = :sendmail
   # Paperclip.options[:command_path] = "/usr/bin/"
 
   # Raises error for missing translations
